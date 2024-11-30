@@ -1,0 +1,54 @@
+{
+  "compileOnSave": true,
+
+  "compilerOptions": {
+    // Emit
+    "declaration": true,
+    "declarationMap": true,
+    "target": "esnext",
+    "lib": ["esnext"],
+    "outDir": "dist",
+    "sourceMap": true,
+
+    // Type Checking
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
+    "alwaysStrict": true,
+    "exactOptionalPropertyTypes": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitAny": true,
+    "noImplicitOverride": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "strictBindCallApply": true,
+    "strictFunctionTypes": true,
+    "strictNullChecks": true,
+    "strictPropertyInitialization": false,
+
+    // Modules
+    "isolatedModules": false,
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
+    "resolveJsonModule": true,
+
+    // Interop Constraints
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+
+    // Experimental Options
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+
+    // JavaScript Support
+    "allowJs": false,
+    "checkJs": false
+  },
+
+  // Files
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "**/*.test.ts"]
+}

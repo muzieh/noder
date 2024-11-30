@@ -1,12 +1,20 @@
 {
   "name": "tasks",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "description": "Tasks API service",
+  "private": true,
+  "type": "module",
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "scripts": {
+    "clean": "rimraf dist",
+    "test": "jest",
+    "build": "pnpm clean && tsup src/index.ts --format esm --minify",
+    "start": "tsx dist",
+    "dev": "pnpm build && tsx watch src/index.ts"
+  },
+  "dependencies": {
+    "@oversoft/abc": "workspace:^"
+  }
 }

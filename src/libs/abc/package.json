@@ -1,0 +1,16 @@
+{
+  "name": "@oversoft/abc",
+  "private": true,
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "clean": "rimraf ./dist",
+    "test": "jest",
+    "build": "pnpm clean && tsc"
+  },
+  "devDependencies": {
+  }
+}
