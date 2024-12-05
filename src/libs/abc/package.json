@@ -11,6 +11,5 @@
     "test": "jest",
     "build": "pnpm clean && tsc"
   },
-  "devDependencies": {
-  }
+  "devDependencies": {}
 }

@@ -14,9 +14,6 @@
     "emitDeclarationOnly": true,
     "exactOptionalPropertyTypes": false
   },
-  "include": ["src/**/*.ts",
-    "tests/**/*.ts"
-  ],
-  "exclude": [
-    "tests/**/*.(test|spec).ts", "dist", "node_modules"]
+  "include": ["src/**/*.ts", "tests/**/*.ts"],
+  "exclude": ["tests/**/*.(test|spec).ts", "dist", "node_modules"]
 }
