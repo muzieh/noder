@@ -1,19 +1,44 @@
-import patataj from './patat';
+import Fastify from 'fastify';
+import { getLoggerConfig } from '@oversoft/logging';
 
-export type Person = {
-  name: string;
-  age: number;
-  city: string;
-};
-const abc: number = 123;
+const app = Fastify({
+  logger: getLoggerConfig(),
+});
 
-console.log(abc);
+interface GetTaskParams {
+  taskId: number;
+}
 
-const per: Person = {
-  name: 'John',
-  age: 30,
-  city: 'New York',
-};
+app.get<{
+  Params: GetTaskParams;
+}>('/tasks/:taskId', {
+  schema: {
+    params: {
+      type: 'object',
+      properties: {
+        taskId: { type: 'number' },
+      },
+      required: ['taskId'],
+    },
+  },
+  handler: (request) => {
+    const { taskId } = request.params;
+    return { task: 'task', taskId };
+  },
+});
 
-console.log(per);
-console.log(patataj());
+app.get('/', async () => {
+  return { hello: 'world' };
+});
+
+try {
+  await app.listen({ port: 3000 });
+
+  app.log.info('Request received');
+  app.log.warn('Request received');
+  app.log.error('Request received');
+  app.log.info({ a: 12, b: 'asdf' }, 'my object');
+} catch (err) {
+  app.log.error(err);
+  process.exit(1);
+}
