@@ -3,9 +3,9 @@ export type Kangar = {
   name: string;
 };
 
-const abc = 123;
-
 export const funa = () => {
   console.log('Hello, Kangar!');
   Promise.reject();
+  if (Date.now() > new Date().getTime()) {
+  }
 };
