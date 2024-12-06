@@ -11,21 +11,31 @@ interface GetTaskParams {
 
 app.get<{
   Params: GetTaskParams;
-}>('/tasks/:taskId', {
-  schema: {
-    params: {
-      type: 'object',
-      properties: {
-        taskId: { type: 'number' },
+}>(
+  '/tasks/:taskId',
+  {
+    schema: {
+      params: {
+        type: 'object',
+        properties: {
+          taskId: { type: 'number' },
+        },
+        required: ['taskId'],
       },
-      required: ['taskId'],
+    },
+    preValidation: (request, reply, done) => {
+      const { taskId } = request.params;
+      request.log.info('preValidation');
+      done(
+        taskId <= 0 ? new Error('Task ID must be greater than 0') : undefined,
+      );
     },
   },
-  handler: (request) => {
+  async (request) => {
     const { taskId } = request.params;
     return { task: 'task', taskId };
   },
-});
+);
 
 app.get('/', async () => {
   return { hello: 'world' };
