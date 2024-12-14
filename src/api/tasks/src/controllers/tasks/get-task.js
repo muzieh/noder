@@ -1,10 +1,16 @@
-import fastify from 'fastify';
-
-export const route = fastify.route({
+export const getTask = {
   method: 'GET',
-  url: '/tasks/:taskId',
+  url: '/:taskId',
+  schema: {
+    params: {
+      type: 'object',
+      properties: {
+        taskId: { type: 'integer' },
+      },
+    },
+  },
   handler: (request, reply) => {
     const { taskId } = request.params;
     return { task: 'task', taskId };
   },
-});
+};
