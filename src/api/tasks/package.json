@@ -4,6 +4,7 @@
   "description": "Tasks API service",
   "private": true,
   "type": "module",
+  "types": "index.d.ts",
   "keywords": [],
   "author": "",
   "license": "ISC",

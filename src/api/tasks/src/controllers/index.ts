@@ -8,8 +8,7 @@ export default function (
   options: taskOptions,
   done: () => void,
 ): void | Promise<void> {
-  fastify.log.info('!!!!!!!!!!!!!!!!!!!');
-  fastify.log.info(options);
-  fastify.register(tasksController, { prefix: '/tasks' });
+  fastify.register(tasksController, { ...options, prefix: '/tasks' });
+
   done();
 }

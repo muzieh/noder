@@ -82,11 +82,6 @@ app.register(
 
 try {
   await app.listen({ port: 3000 });
-
-  app.log.info('Request received');
-  app.log.warn('Request received');
-  app.log.error('Request received');
-  app.log.info({ a: 12, b: 'asdf' }, 'my object');
 } catch (err) {
   app.log.error(err);
   process.exit(1);
