@@ -3,6 +3,7 @@ import build from './app';
 
 const server = await build({
   logger: getLoggerConfig(),
+  printRoutes: true,
 });
 
 server.listen({ port: 3000 }, (err, address) => {
