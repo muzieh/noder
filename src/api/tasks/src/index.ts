@@ -1,7 +1,7 @@
 import Fastify from 'fastify';
 import { getLoggerConfig } from '@oversoft/logging';
 import fastifyPrintRoutes from 'fastify-print-routes';
-import getTasks from './controllers';
+import tasksController from './controllers';
 
 const app = Fastify({
   logger: getLoggerConfig(),
@@ -12,7 +12,7 @@ interface GetTaskParams {
 }
 
 await app.register(fastifyPrintRoutes);
-await app.register(getTasks, { prefix: '/tasks' });
+await app.register(tasksController, { myProp: 'tst' });
 
 app.get<{
   Params: GetTaskParams;
