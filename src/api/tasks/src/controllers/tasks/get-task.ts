@@ -1,25 +1,21 @@
 import { FastifyReply, FastifyRequest } from 'fastify';
-
-interface Params {
-  taskId: number;
-}
+import { tasksSchema, Tasks } from '../../types';
 
 export const getTask = {
   method: 'GET',
-  url: '/:taskId',
+  url: '/:id',
   schema: {
-    params: {
-      type: 'object',
-      properties: {
-        taskId: { type: 'integer' },
-      },
+    params: tasksSchema.api.get.params,
+    response: {
+      '200': tasksSchema.api.get.body,
     },
   },
   handler: (
-    request: FastifyRequest<{ Params: Params }>,
+    request: FastifyRequest<{ Params: Tasks.API.Get.Params }>,
     response: FastifyReply,
   ) => {
-    const { taskId } = request.params;
-    return response.send({ task: 'task', taskId }).status(200);
+    const { id } = request.params;
+    console.log(`GET /tasks/${id}`);
+    return response.send({ task: 'task', id }).status(200);
   },
 };
