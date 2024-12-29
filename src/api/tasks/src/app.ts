@@ -1,17 +1,10 @@
 import fastify from 'fastify';
-//import fastifyPrintRoutes from 'fastify-print-routes';
 import controllers from './controllers';
 
-export default function buildApp(opts = {}) {
+export default async function buildApp(opts = {}) {
   const app = fastify(opts);
-
-  /*
-  if (Bool(opts.printRoutes)) {
-    app.register(fastifyPrintRoutes);
-  }
-   */
-
-  app.register(controllers, { myProp: 'tst' });
+  await app.register(controllers);
+  await app.ready();
 
   return app;
 }
